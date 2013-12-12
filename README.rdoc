@@ -1,6 +1,34 @@
 = fun_with_version_strings
 
-Description goes here.
+Declare any Ruby object to have a version:
+
+class MyGem; end
+
+FunWith::VersionStrings.versionize( MyGem, "0.0.3" )
+
+Then the following is true:
+
+    MyGem.version # => "0.0.3"
+    MyGem.version.major  # => 0
+    MyGem.version.minor  # => 0
+    MyGem.version.patch  # => 3
+
+You can also compare versions.  Observe:
+
+    version_a = "9.1.4"
+    version_b = "10.1.0"
+    version_c = "9.2.0"
+    
+    version_c > version_a   # => true
+    version_c == version_a  # => false
+    version_b > version_a   # => true
+    version_b < version_a   # => false
+    
+But comparisons are a bit tricky.  It will try to compare standard strings as version strings, if the standard string is of the proper format.  Otherwise
+it will compare the two as regular strings.  Note that this means that the
+comparison behaves differently depending on whether the left-hand side is
+a regular string.
+    
 
 == Contributing to fun_with_version_strings
  
