@@ -13,3 +13,4 @@ group :development do
 end
 
 gem "fun_with_files"
+gem "debugger"

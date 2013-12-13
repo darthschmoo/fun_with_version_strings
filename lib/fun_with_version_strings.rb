@@ -1,4 +1,5 @@
 require 'fun_with_files'
+require 'debugger'
 
 root = __FILE__.fwf_filepath.dirname.up
 

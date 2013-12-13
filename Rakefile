@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "fun_with_version_strings"
   gem.homepage = "http://github.com/darthschmoo/fun_with_version_strings"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = "Add a version string (with :major,:minor, and :patch methods) to a Ruby object."
+  gem.description = "A simple little gem for adding a version string to any Ruby object."
   gem.email = "keeputahweird@gmail.com"
   gem.authors = ["Bryce Anderson"]
   # dependencies defined in Gemfile

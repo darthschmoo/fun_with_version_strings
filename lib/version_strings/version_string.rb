@@ -13,6 +13,8 @@ module FunWith
         @major = (@match_data[:major] || 0).to_i
         @minor = (@match_data[:minor] || 0).to_i
         @patch = (@match_data[:patch] || 0).to_i
+        
+        super( "#{@major}.#{@minor}.#{@patch}" )
       end
     end
   end

@@ -28,4 +28,17 @@ class VersionStringsTestCase < Test::Unit::TestCase
       end
     end
   end
+  
+  def versioned_module( &block )
+    @module = Module.new
+    
+    assert !( @module.respond_to?( :version ) ), "New module shouldn't respond to :version method."
+    
+    FunWith::VersionStrings.versionize( @module, "3.1.2" )
+    assert @module.respond_to?( :version ), "New module should respond to :version method."
+    
+    assert @module.version.is_a?(String), "@module.version should yield a string"
+    assert @module.version.is_a?(FunWith::VersionStrings::VersionString), "@module.version should yield a VersionString"
+    yield
+  end
 end

@@ -6,9 +6,7 @@ class TestFunWithVersionStrings < VersionStringsTestCase
       assert "".respond_to?(:fwvs_version_string), "String not responding"
       assert FunWith::VersionStrings.respond_to?(:root), "FunWith::VersionStrings not responding to root"
       assert FunWith::VersionStrings.respond_to?(:versionize), "FunWith::VersionStrings not responding to versionize"
-      
-    end
-    
+    end    
   end
   
   
@@ -49,8 +47,15 @@ class TestFunWithVersionStrings < VersionStringsTestCase
     end
   end
   
+  context "trying it out" do
+    should "be able to call .version() on a class" do
+      versioned_module do
+        assert @module.version.length == 5, "@module.version.length == 5"
+      end
+    end
+  end
+  
   should "compare incorrectly when dealing with regular strings" do
-    
     flunk "not written"
   end
 end
