@@ -55,6 +55,33 @@ class TestFunWithVersionStrings < VersionStringsTestCase
     end
   end
   
+  context "trying out default approach to finding a module version" do
+    should "raise error when no string given" do
+      mod = Module.new
+
+      assert_raises( RuntimeError ) do
+        FunWith::VersionStrings.versionize( @module )
+      end
+    end
+    
+    should "raise error when root has no VERSION file" do
+      mod = Module.new
+      FunWith::Files::RootPath.rootify(mod, FunWith::VersionStrings.root("test"))
+      assert_raises( RuntimeError ) do
+        FunWith::VersionStrings.versionize( @module )
+      end
+    end
+    
+    should "set version by VERSION file when module has a root" do
+      mod = Module.new
+      FunWith::Files::RootPath.rootify( mod, FunWith::VersionStrings.root )
+      FunWith::VersionStrings.versionize( mod )
+      assert FunWith::VersionStrings.respond_to?(:version)
+      assert mod.respond_to?(:version)
+      assert_equal FunWith::VersionStrings.version, mod.version
+    end
+  end
+  
   should "compare incorrectly when dealing with regular strings" do
     flunk "not written"
   end
