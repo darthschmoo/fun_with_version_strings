@@ -1,14 +1,16 @@
 require 'fun_with_files'
-require 'debugger'
+
+module FunWith
+  module VersionStrings
+  end
+end
 
 root = __FILE__.fwf_filepath.dirname.up
 
-for requirement in root.join("lib", "version_strings").glob( :ext => "rb", :recursive => true )
-  require requirement
-end
+root.join( "lib", "version_strings" ).requir
 
 FunWith::Files::RootPath.rootify( FunWith::VersionStrings, root )
 FunWith::VersionStrings::VersionString.send( :include, FunWith::VersionStrings::Comparator )
 FunWith::VersionStrings.extend( FunWith::VersionStrings::API )
-FunWith::VersionStrings.versionize( FunWith::VersionStrings, root.join("VERSION").read )
+FunWith::VersionStrings.versionize( FunWith::VersionStrings, root.join( "VERSION" ).read )
 
