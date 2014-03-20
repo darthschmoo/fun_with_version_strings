@@ -7,11 +7,12 @@ module FunWith
       # my gems.
       def versionize( obj, version_string = nil )
         if obj.respond_to?(:version)
-          warn( "FunWith::VersionStrings (warn):  #{obj.to_s[0..100]} already responds to version()")
+          warn( "FunWith::VersionStrings (warn):  #{obj.to_s[0..100]} already responds to version().  Leaving alone.")
+          return nil
         end
         
         if version_string.nil?
-          if obj.respond_to?(:root) && obj.root("VERSION").file?
+          if obj.respond_to?(:root) && obj.root.is_a?(FunWith::Files::FilePath) && obj.root("VERSION").file?
             version_string = obj.root("VERSION").read
           else
             raise "No version string specified, and cannot infer version from VERSION file."

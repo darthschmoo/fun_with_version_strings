@@ -82,7 +82,18 @@ class TestFunWithVersionStrings < VersionStringsTestCase
     end
   end
   
-  should "compare incorrectly when dealing with regular strings" do
-    flunk "not written"
+  should "compare as strings when compared string doesn't fit the format" do
+    v = "10.0.10".fwvs_version_string
+    
+    comparisons = [[1, "0a"], 
+                   [1, "--"],
+                   [1, "..?"],
+                   [-1, "5 is a number"]
+                  ]
+                   
+    
+    for compare in comparisons
+      assert_equal compare.first, ( v <=> compare.last )
+    end
   end
 end

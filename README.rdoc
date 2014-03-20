@@ -24,11 +24,17 @@ You can also compare versions.  Observe:
     version_b > version_a   # => true
     version_b < version_a   # => false
     
-But comparisons are a bit tricky.  It will try to compare standard strings as version strings, if the standard string is of the proper format.  Otherwise
-it will compare the two as regular strings.  Note that this means that the
-comparison behaves differently depending on whether the left-hand side is
-a regular string.
-    
+But comparisons are a bit tricky.  It will try to compare standard strings as version strings, if the standard string is of the proper format.  Otherwise it will compare the two as regular strings.
+
+If the versionized object responds to ".root" and that root is a FunWith::Files::FilePath, you don't need to give a version.  versionize() will try to read the version from the VERSION file in the root directory.
+
+It's a common pattern with my gems.
+
+Other useful stuff:
+
+    "10.4.9".fwvs_version_string.patch  #  => 9
+
+
 
 == Contributing to fun_with_version_strings
  
