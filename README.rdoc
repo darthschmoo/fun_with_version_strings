@@ -32,7 +32,7 @@ It's a common pattern with my gems.
 
 Other useful stuff:
 
-    "10.4.9".fwvs_version_string.patch  #  => 9
+    "10.4.9".fwvs_version_string.patch  #  => 9  (converts a normal string into a FunWith::VersionStrings::VersionString)
 
 
 
